@@ -7,7 +7,14 @@ extends Control
 @onready var message_label = $MessageLabel
 
 func _ready():
+    price_history.append(lrk_price)
     update_ui()
+
+func _process(delta):
+    timer += delta
+    if timer >= price_change_interval:
+        update_price()
+        timer = 0
 
 func update_ui():
     lrk_price_label.text = "Цена LRK: " + str(StockMarket.lrk_price) + " ₽"
@@ -19,9 +26,11 @@ func show_message(message):
     message_label.text = message
 
 func update_price_chart():
-    price_chart.clear_points()
-    for price in StockMarket.price_history:
-        price_chart.add_point(price)
+    var change_percent = randf_range(-0.1, 0.1)
+    lrk_price += lrk_price * change_percent
+    lrk_price = max(lrk_price, 10)
+    price_history.append(lrk_price)
+    print("Новая цена LRK: ", lrk_price, " ₽")
 
 func _on_buy_lrk_button_pressed(amount):
     StockMarket.buy_lrk(amount, PlayerData)
