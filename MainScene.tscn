@@ -1,0 +1,101 @@
+[gd_scene load_steps=10 format=3]
+
+[node name="MainScene" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+position = Vector3(0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = CapsuleShape3D
+
+[node name="MainUI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MessageLabel" type="Label" parent="MainUI"]
+position = Vector2(20, 20)
+text = "Сообщения"
+
+[node name="ShopButton" type="Button" parent="MainUI"]
+position = Vector2(20, 60)
+text = "Магазин"
+
+[node name="StockMarketButton" type="Button" parent="MainUI"]
+position = Vector2(120, 60)
+text = "Биржа"
+
+[node name="InventoryButton" type="Button" parent="MainUI"]
+position = Vector2(220, 60)
+text = "Инвентарь"
+
+[node name="ShopUI" type="Control" parent="MainUI"]
+visible = false
+
+[node name="MoneyLabel" type="Label" parent="ShopUI"]
+position = Vector2(20, 20)
+text = "Деньги: 1000 ₽"
+
+[node name="CrystalsLabel" type="Label" parent="ShopUI"]
+position = Vector2(20, 50)
+text = "Кристаллы: 0"
+
+[node name="MessageLabel" type="Label" parent="ShopUI"]
+position = Vector2(20, 80)
+text = "Сообщения"
+
+[node name="BuyItemButton" type="Button" parent="ShopUI"]
+position = Vector2(20, 120)
+text = "Купить товар"
+
+[node name="BuyUpgradeButton" type="Button" parent="ShopUI"]
+position = Vector2(120, 120)
+text = "Купить улучшение"
+
+[node name="StockMarketUI" type="Control" parent="MainUI"]
+visible = false
+
+[node name="LRKPriceLabel" type="Label" parent="StockMarketUI"]
+position = Vector2(20, 20)
+text = "Цена LRK: 100 ₽"
+
+[node name="MoneyLabel" type="Label" parent="StockMarketUI"]
+position = Vector2(20, 50)
+text = "Деньги: 1000 ₽"
+
+[node name="LRKLabel" type="Label" parent="StockMarketUI"]
+position = Vector2(20, 80)
+text = "LRK: 0"
+
+[node name="MessageLabel" type="Label" parent="StockMarketUI"]
+position = Vector2(20, 110)
+text = "Сообщения"
+
+[node name="PriceChart" type="Control" parent="StockMarketUI"]
+position = Vector2(20, 140)
+size = Vector2(200, 100)
+
+[node name="BuyLRKButton" type="Button" parent="StockMarketUI"]
+position = Vector2(20, 260)
+text = "Купить LRK"
+
+[node name="SellLRKButton" type="Button" parent="StockMarketUI"]
+position = Vector2(120, 260)
+text = "Продать LRK"
+
+[node name="InventoryUI" type="Control" parent="MainUI"]
+visible = false
+
+[node name="InventoryList" type="ItemList" parent="InventoryUI"]
+position = Vector2(20, 20)
+size = Vector2(200, 200)
+
+[node name="MessageLabel" type="Label" parent="InventoryUI"]
+position = Vector2(20, 240)
+text = "Сообщения"
+
+[node name="SellItemButton" type="Button" parent="InventoryUI"]
+position = Vector2(20, 280)
+text = "Продать"
